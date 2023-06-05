@@ -11,8 +11,15 @@ if __name__ == '__main__':
     session = Session()
 
     
-    d_1 = Drinks(name="Big Mama Latte", description="espresso with steamed milk & caramel + chocolate + marshmallow", price=8)
-    app_1 = Appointment(dog='Chloe', Owner='Sarah', service='Bath + nail trim' price='20')
+    dog1  = Dog('Tucker', 'Labradoodle', 3)
+    dog2 = Dog('Doug', 'Pug', 5)
+    dog3 = Dog('Thor', 'Husky', 7)
+
+    owner1 = Owner('Matt')
+    owner2 = Owner('Matty')
+    owner3 = Owner('Sarah')
+
+    
 
 
     session.commit()
