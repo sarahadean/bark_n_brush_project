@@ -16,11 +16,15 @@ class Dog(Base):
     breed = Column(String())
     age = Column(Integer())
 
+    owner_id = Column(Integer(), ForeignKey('owners.id'))
+    owner = relationship('Owner', backref='dogs')
+
     def __repr__(self):
         return f"Dog ID {self.id}:" \
             + f" Name: {self.name}," \
             + f" Breed: {self.breed}," \
-            + f" Age: {self.age}," 
+            + f" Age: {self.age}," \
+            + f"Owner: {self.owner},"
 
 
 class Owner(Base):
@@ -28,6 +32,8 @@ class Owner(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
+
+    dog = Column(String(), ForeignKey('dogs.name'))
 
     def __repr__(self):
         return f"Owner ID {self.id}:" \
@@ -41,6 +47,7 @@ class Appointment(Base):
     date_and_time = Column(DateTime())
     service = Column(String())
     price = Column(Integer())
+    
     dog_id = Column(Integer(), ForeignKey('dogs.id'))
     owner_id = Column(Integer(), ForeignKey('owners.id'))
 
