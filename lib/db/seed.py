@@ -20,8 +20,5 @@ if __name__ == '__main__':
     owner2 = Owner('Matty')
     owner3 = Owner('Sarah')
 
-    
-
-
     session.commit()
     session.close()
