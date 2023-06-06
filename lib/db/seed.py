@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from models import *
+Base.metadata.create_all(bind=engine)
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///barknbrush.db')
