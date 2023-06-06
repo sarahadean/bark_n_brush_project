@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, desc, func
 from sqlalchemy import Column, DateTime, Integer, String, Boolean, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
+from typing import List
 
 engine = create_engine('sqlite:///barknbrush.db')
 Base = declarative_base()
@@ -15,6 +16,7 @@ class Dog(Base):
     name = Column(String())
     breed = Column(String())
     age = Column(Integer())
+    
 
     def __repr__(self):
         return f"Dog ID {self.id}:" \
@@ -28,6 +30,7 @@ class Owner(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
+    dog = Column(String())
 
     def __repr__(self):
         return f"Owner ID {self.id}:" \
