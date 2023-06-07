@@ -19,8 +19,6 @@ if __name__ == '__main__':
     # price
     # dog_id
     # owner_id
-    # best_friends
-    # owners
 
     #Dog:
     # name
