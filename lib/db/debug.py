@@ -4,7 +4,7 @@ from models import *
 
 
 if __name__ == '__main__':
-    engine = create_engine('sqlite:///certified_shredder.db')
+    engine = create_engine('sqlite:///barknbrush.db')
     Session = sessionmaker(bind=engine)
     session = Session()
     print("This if statement is firing")
