@@ -49,6 +49,7 @@ class Appointment(Base):
     service = Column(String())
     price = Column(Integer())
     
+    
     def __repr__(self):
         return f"Appointment ID {self.id}:" \
             + f" Date and Time: {self.date_and_time,}" \

@@ -1,8 +1,8 @@
-"""relationship revision
+"""revert to one to one
 
-Revision ID: 39deb0847a55
+Revision ID: 4e097a105930
 Revises: 
-Create Date: 2023-06-06 17:35:47.680268
+Create Date: 2023-06-06 20:15:08.382291
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '39deb0847a55'
+revision = '4e097a105930'
 down_revision = None
 branch_labels = None
 depends_on = None
