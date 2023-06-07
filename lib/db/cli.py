@@ -2,7 +2,7 @@ from rich.console import Console
 from rich.theme import Theme
 from rich.table import Table
 from rich.markdown import Markdown
-from models import *
+from models import Dog, Owner, Appointment
 from sqlalchemy import create_engine, update, DateTime, MetaData
 from sqlalchemy.orm import sessionmaker
 import datetime
@@ -82,9 +82,9 @@ class CLI:
                 exit = True
     
     def show_appts(self):
-        #all_appts = session.query(Appointment).all()
-        table = Table(metadata,title='Current Appointments', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
-        table.add_column('Dog',  justify="center" , style="bold black on #007ba7")
+      
+        table = Table(title='Current Appointments', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
+        table.add_column("Dog",  justify="center" , style="bold black on #007ba7")
         table.add_column("Date and Time", justify="center" , style="bold black on #007ba7")
         table.add_column("Service", justify="center", style="bold black on #007ba7")
         table.add_column("Price", justify="center", style="bold black on #007ba7")
@@ -94,7 +94,7 @@ class CLI:
         for appointment in query_show_appts:
             table.add_row(f'{appointment.dog.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
         # console = Console()    
-        self.console.print(table) 
+        console.print(table)
 
     #ask who is owner - enter owner name?
     #ask who is dog - enter dog name, breed, age
