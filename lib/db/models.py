@@ -48,7 +48,7 @@ class Owner(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
-    dog = Column(String())
+    # dog = Column(String())
 
     # best_friend = relationship('Dog', back_populates='owner')
 
@@ -80,3 +80,4 @@ class Appointment(Base):
             + f" Service: {self.service}," \
             + f" Price: {self.price}," \
             
+Base.metadata.create_all(bind=engine)
