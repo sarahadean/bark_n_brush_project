@@ -217,7 +217,7 @@ class CLI:
         new_owner = Owner(name=owner_name)
         new_owner.best_friends.append(new_dog)
         session.add(new_owner)
-        #session.commit()
+        session.commit()
         
         appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
         appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
@@ -242,8 +242,25 @@ class CLI:
         answers = prompt(questions)
         # pprint(answers)
         selected_service = answers['services']
+        #setting the price 
+        service_price = int
+        if selected_service == "Nice 'N Easy Bath":
+            service_price = 35
+        elif selected_service == "Doggie Facial":
+            service_price = 20
+        elif selected_service == "Nail Clipping/Grinding":
+            service_price = 20
+        elif selected_service == "Paw Balm":
+            service_price = 15
+        elif selected_service == "Furminator De-Shedding":
+            service_price = 50
+        elif selected_service == "Deluxe Doggie Spa":
+            service_price = 200
+        elif selected_service == "Doggie Daycare":
+            service_price = 100
+
 #!!!!add Input asking 'Add another service?'
-        add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
+        add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=service_price, dog_id=new_dog.id, owner_id=new_owner.id)
         #input("Appointment Summary:
         #       Owner:
         #       Dog:

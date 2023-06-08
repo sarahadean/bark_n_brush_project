@@ -41,15 +41,15 @@ if __name__ == '__main__':
 
 # Teddy Code
     appointment1 = Appointment(
-        date_and_time=datetime(2023, 7, 21, 9, 30, 15), service='Grooming', price=50)
+        date_and_time=datetime(2023, 7, 21, 9, 30, 15), service='Furminator De-Shedding', price=50)
     appointment2 = Appointment(
-        date_and_time=datetime(2023, 8, 2, 12, 45, 20), service='Walk', price=25)
+        date_and_time=datetime(2023, 8, 2, 12, 45, 20), service='Doggie Facial', price=20)
     appointment3 = Appointment(
-        date_and_time=datetime(2023, 9, 10, 16, 0, 5), service='Grooming', price=50)
+        date_and_time=datetime(2023, 9, 10, 16, 0, 5), service="Nice 'N Easy Bath", price=35)
     appointment4 = Appointment(
-        date_and_time=datetime(2023, 10, 5, 8, 15, 35), service='Walk', price=25)
+        date_and_time=datetime(2023, 10, 5, 8, 15, 35), service="Doggie Daycare", price=100)
     appointment5 = Appointment(
-        date_and_time=datetime(2023, 11, 18, 20, 50, 10), service='Grooming', price=50)
+        date_and_time=datetime(2023, 11, 18, 20, 50, 10), service="Deluxe Doggie Spa", price=200)
 
     # Associate dogs and owners with appointments
     dog1.appointments.append(appointment1)
