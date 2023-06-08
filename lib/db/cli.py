@@ -63,6 +63,7 @@ class CLI:
 
             if choice == "2":
                 self.new_appt()
+                input("Appointment Created")
 
 
             if choice == "1":
@@ -78,7 +79,10 @@ class CLI:
                 input('Appointment cancelled. Press any key to return to the main menu..')    
             elif choice == '5':
                 exit = True
-    
+
+
+#------------SHOW APPOINTMENTS------------------------ 
+# !!!GET FANCY: list dog breed and age with dog name 
     def show_appts(self):
       
         table = Table(title='Current Appointments', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
@@ -89,7 +93,7 @@ class CLI:
         table.add_column("Service", justify="center", style="bold black on #007ba7")
         table.add_column("Price", justify="center", style="bold black on #007ba7")
         
-#!!!!!!GET FANCY - advanced deliverable - under dog name, list breed and age
+
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
             table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
@@ -98,7 +102,13 @@ class CLI:
 
     
 #--------------MAKES NEW APPOINTMENTS-------------------
-    #!!!!!!GET FANCY! -  COME BACK LATER AND ADD CONTACT INFO ATTRIBUTE FOR OWNER
+#!!!!!!GET FANCY:  - Add contact info for owner - phone number and/or email
+#                  - Hard code prices for services
+#                  - Show total cost of appointment upon confirmation?
+#                  - Can date/time be shown as a string? June 6, 2023
+#                  - Able to select multiple services
+#                  - Show happy dog ASCII upon appt creation
+
     def new_appt(self):
         
         dog_name = input('Enter Dog Name: ')
@@ -136,9 +146,17 @@ class CLI:
         selected_service = answers['services']
 #!!!!add Input asking 'Add another service?'
         add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
-        
+        #input("Appointment Summary:
+        #       Owner:
+        #       Dog:
+        #       Service(s):
+        #       Cost:
+        #       Done?
+        #       ")
         session.add(add_new_appt)
         session.commit()
+
+
 
 
 #--------UPDATES APPOINTMENTS--------------  
@@ -167,7 +185,23 @@ class CLI:
             appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
             filter_result.update({Appointment.date_and_time: appt_date_and_time_obj})
         elif selected_update == 'Services':
-            input('Chose service')
+            questions = [
+            {
+                'type' : 'list',
+                'name' : 'services',
+                'message' : 'Choose A Service:',
+                'choices' : [
+                        "Bath",
+                        "Nail Trim",
+                        "Grooming",
+                        "Deluxe Doggie Spa"
+                ]
+            }
+        ]
+            answers = prompt(questions)
+            pprint(answers)
+            selected_service = answers['services']
+            filter_result.update({Appointment.service: selected_service})
         else:
             input('Press any key to discard changes and go back to main menu')
         
@@ -175,7 +209,9 @@ class CLI:
        
 
 
-#!!!!!!GET FANCY AND ADD INPUT ID TO CANCELLATION CONFIRMATION MESSAGE
+#---------------DELETE APPOINTMENTS------------------------------
+#!!!!!!GET FANCY: - Show id or dogname with cancellation confirmation message:
+#                   (Are you sure you want to cancel Tucker's appointment?)
     def delete_appt(self):
         self.show_appts()
         appt_del = input('ID you wish to delete: ')
