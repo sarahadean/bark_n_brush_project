@@ -48,7 +48,7 @@ class Owner(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
-    dog = Column(String())
+    # dog = Column(String())
 
     # best_friend = relationship('Dog', back_populates='owner')
 
