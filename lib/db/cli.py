@@ -92,6 +92,7 @@ class CLI:
     def show_appts(self):
       
         table = Table(title='Current Appointments', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
+        table.add_column('Appointment ID', justify='center', style="bold black on #007ba7")
         table.add_column("Dog",  justify="center" , style="bold black on #007ba7")
         table.add_column("Owner", justify="center" , style="bold black on #007ba7")
         table.add_column("Date and Time", justify="center" , style="bold black on #007ba7")
@@ -101,7 +102,7 @@ class CLI:
     #advanced deliverable - under dog name, list breed and age
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
-            table.add_row(f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
+            table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
 
         console.print(table)
 
