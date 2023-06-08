@@ -80,7 +80,7 @@ class Appointment(Base):
             + f" Service: {self.service}," \
             + f" Price: {self.price}," \
             
-class Menu_Item:
+class Menu_Item(Base):
     __tablename__ = "menu_items"
     id = Column(Integer(), primary_key=True)
     name = Column(String())
