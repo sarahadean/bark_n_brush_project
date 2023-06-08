@@ -2,7 +2,7 @@ from rich.console import Console
 from rich.theme import Theme
 from rich.table import Table
 from rich.markdown import Markdown
-from models import Dog, Owner, Appointment
+from models import Dog, Owner, Appointment, Menu_Item
 from sqlalchemy import create_engine, update, DateTime, MetaData
 from sqlalchemy.orm import sessionmaker
 import datetime
@@ -37,11 +37,12 @@ MARKDOWN = """
 
         
 Please select your desired function by number
-1. View all schedule appointments
-2. Make a new appointment
-3. Change an existing appointments
-4. Cancel an appointment
-5. Exit
+1. View Services Menu
+2. View all schedule appointments
+3. Make a new appointment
+4. Change an existing appointments
+5. Cancel an appointment
+6. Exit
 """
 
 console = Console()
@@ -134,27 +135,46 @@ class CLI:
             console.print(md)
             choice = input("Make a selection to continue...")
 
-            if choice == "2":
+            if choice == "1":
+                self.print_menu()
+                input('Press Any Key When Done')
+
+            if choice == "3":
                 self.new_appt()
                 input("Appointment Created")
 
-
-            if choice == "1":
+            if choice == "2":
                 self.show_appts()
-                input('PRESS ANY KEY WHEN DONE')
+                input('Press Any Key When Done')
 
-            if choice == "3":
+            if choice == "4":
                 self.update_appts()
                 input('Appointment updated. Press any key to return to the main menu..')
 
-            if choice == "4":
+            if choice == "5":
                 self.delete_appt()
                 # input('Appointment cancelled. Press any key to return to the main menu..')    
-            elif choice == '5':
+            elif choice == '6':
                 exit = True
 
 
-#------------SHOW APPOINTMENTS------------------------ 
+
+#-----------SHOW MENU----------------------
+    def print_menu(self):
+        menu_table = Table(title='Service Menu', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
+        menu_table.add_column("Name",  justify="center" , style="bold black on #007ba7")
+        menu_table.add_column("Description", justify="center" , style="bold black on #007ba7")
+        menu_table.add_column("Price", justify="center", style="bold black on #007ba7")
+
+        query_menu_items = [item for item in session.query(Menu_Item)]
+        for item in query_menu_items:
+            menu_table.add_row(f'{item.name}', f'{item.description}', f'${item.price}')
+
+        console.print(menu_table)
+
+        
+
+#------------SHOW ALL APPOINTMENTS------------------------ 
 # !!!GET FANCY: list dog breed and age with dog name 
     def show_appts(self):
       
@@ -208,10 +228,14 @@ class CLI:
                 'name' : 'services',
                 'message' : 'Choose A Service:',
                 'choices' : [
-                        "Bath",
-                        "Nail Trim",
-                        "Grooming",
-                        "Deluxe Doggie Spa"
+                        "Nice 'N Easy Bath",
+                        "Doggie Facial",
+                        "Nail Clipping/Grinding",
+                        "Paw Balm",
+                        "Furminator De-Shedding",
+                        "Deluxe Doggie Spa",
+                        "Doggie Daycare",
+
                 ]
             }
         ]
@@ -265,10 +289,13 @@ class CLI:
                 'name' : 'services',
                 'message' : 'Choose A Service:',
                 'choices' : [
-                        "Bath",
-                        "Nail Trim",
-                        "Grooming",
-                        "Deluxe Doggie Spa"
+                        "Nice 'N Easy Bath",
+                        "Doggie Facial",
+                        "Nail Clipping/Grinding",
+                        "Paw Balm",
+                        "Furminator De-Shedding",
+                        "Deluxe Doggie Spa",
+                        "Doggie Daycare",
                 ]
             }
         ]
