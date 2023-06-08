@@ -12,6 +12,7 @@ from datetime import datetime
 from rich.progress import track
 from rich.prompt import Prompt
 
+
 metadata = MetaData()
 engine = create_engine('sqlite:///barknbrush.db')
 Session = sessionmaker(bind=engine)
@@ -221,4 +222,56 @@ class CLI:
         session.commit()
 
 
-CLI()
+
+
+
+    def close_appts(self):
+
+        ascii_goodbye = """
+    
+                                                                                                    
+                                                                                        
+        ░░                    ░░        ██████████  ░░                    ░░            
+                                    ████          ████                                  
+                                  ████              ████                                
+░░      ░░                    ░░██                      ██░░              ░░            
+        ░░            ░░      ░░██  ██  ██      ██  ██  ██░░      ░░      ░░            
+                              ██    ██              ██    ██                            
+                              ██    ██              ██    ██                            
+░░░░░░░░░░░░░░  ░░░░░░░░░░░░██      ██    ██████    ██      ██░░░░░░░░░░░░░░░░░░  ░░░░░░
+        ░░            ░░    ██    ██        ██        ██    ██    ░░      ░░            
+                            ██  ████    ██  ██  ██    ████  ██                          
+                              ██  ██      ██  ██      ██  ██                            
+                                    ██              ██                                  
+                                      ██████████████                                    
+                                    ██              ██                                  
+                                    ██              ██                                  
+                                    ██    ██  ██    ██                                  
+                                  ████    ██  ██    ████                                
+                                  ████    ██  ██    ████                                
+                                ██  ██    ██  ██    ██  ██                              
+                      ░░        ██  ██    ██  ██    ██  ██        ░░                    
+                                  ████    ██████    ████                                
+                                ██    ████      ████    ██                              
+  ░░░░░░  ░░░░  ░░░░░░  ░░░░░░  ██████    ░░  ░░    ██████░░░░░░░░  ░░░░░░  ░░░░  ░░░░░░
+        ░░            ░░      ░░                                  ░░      ░░            
+                                                                                        
+                                                                                        
+                            LET'S HAVE A DOGGONE GOOD DAY!!!!!!
+ 
+    
+    
+        """
+
+        console.print(ascii_goodbye)
+        
+
+
+
+
+
+
+
+if __name__=='__main__':
+    cli =CLI()
+    cli.close_appts()
