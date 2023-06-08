@@ -17,6 +17,9 @@ engine = create_engine('sqlite:///barknbrush.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
+#!!!FIND WAY TO CENTER DOG UNDER WELCOME MESSAGE
+#!!!ADD MORE ASCII ART - APPT CREATED = SHOW HAPPY DOG, APPT DELETED = SHOW SAD DOG
+
 MARKDOWN = """
 # Welcome to Bark 'n Brush! 
 
@@ -33,8 +36,8 @@ MARKDOWN = """
 
         
 Please select your desired function by number
-1. Make new appointment
-2. See all scheduled appointments
+1. View all schedule appointments
+2. Make a new appointment
 3. Change an existing appointments
 4. Cancel an appointment
 5. Exit
@@ -43,19 +46,6 @@ Please select your desired function by number
 console = Console()
 md = Markdown(MARKDOWN)
 
-single_appointment = """
-# Single Appointment Screen
-
-Please select your desired function by number
-1. Show services menu
-2. Add a new service
-3. List current selected services
-4. Delete an item 
-5. Checkout 
-
-"""
-console = Console()
-sa = Markdown(single_appointment)
 
 class CLI:
     def __init__(self):
@@ -71,19 +61,21 @@ class CLI:
             console.print(md)
             choice = input("Make a selection to continue...")
 
-            if choice == "1":
+            if choice == "2":
                 self.new_appt()
 
-            if choice == "2":
+
+            if choice == "1":
                 self.show_appts()
                 input('PRESS ANY KEY WHEN DONE')
 
             if choice == "3":
                 self.update_appts()
-                input('MODIFY APPOINTMENT')
+                input('Appointment updated. Press any key to return to the main menu..')
 
             if choice == "4":
-                self.delete_appt()    
+                self.delete_appt()
+                input('Appointment cancelled. Press any key to return to the main menu..')    
             elif choice == '5':
                 exit = True
     
@@ -105,7 +97,7 @@ class CLI:
         console.print(table)
 
     
-
+#--------------MAKES NEW APPOINTMENTS-------------------
     #!!!!!!GET FANCY! -  COME BACK LATER AND ADD CONTACT INFO ATTRIBUTE FOR OWNER
     def new_appt(self):
         
@@ -123,10 +115,8 @@ class CLI:
         session.add(new_owner)
         #session.commit()
         
-       
         appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
         appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
-
 
         questions = [
             {
@@ -144,17 +134,14 @@ class CLI:
         answers = prompt(questions)
         pprint(answers)
         selected_service = answers['services']
-
+#!!!!add Input asking 'Add another service?'
         add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
         
         session.add(add_new_appt)
         session.commit()
 
-        #show table
-        #
-        #session.query(Appointment).filter(Appointment.id == selected_id)
-        #choose id
-        #if id == self.id?
+
+#--------UPDATES APPOINTMENTS--------------  
     def update_appts(self):
         self.show_appts()
         selected_id = input("Please enter Appointment id..")
@@ -166,24 +153,27 @@ class CLI:
                         'name' : 'fields',
                         'message' : 'Choose Field to update:',
                         'choices' : [
-                                "Dog",
-                                "Owner",
                                 "Date and Time",
-                                "Service"
+                                "Services"
                         ]
                     }
                 ]
         answers = prompt(questions)
         pprint(answers)
-        selected_update = answers['fields']
+        selected_update = answers['fields'] # = Dog, Owner, Date and Time, or Service
+
+        if selected_update == 'Date and Time':
+            appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
+            appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
+            filter_result.update({Appointment.date_and_time: appt_date_and_time_obj})
+        elif selected_update == 'Services':
+            input('Chose service')
+        else:
+            input('Press any key to discard changes and go back to main menu')
         
-        pass
-        #service_prompt = Prompt.ask(
-            #"Please select a service:" , choices = service_choices
-       # )
-        #session.add(Appointment(service=service_prompt))
-        
-        # session.commit()
+        session.commit()
+       
+
 
 #!!!!!!GET FANCY AND ADD INPUT ID TO CANCELLATION CONFIRMATION MESSAGE
     def delete_appt(self):
