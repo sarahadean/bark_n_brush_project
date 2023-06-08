@@ -82,6 +82,10 @@ class CLI:
             if choice == "3":
                 self.update_appts()
                 input('MODIFY APPOINTMENT')
+
+            if choice == "4":
+                self.show_appts()
+                self.delete_appt()    
             elif choice == '5':
                 exit = True
     
@@ -191,6 +195,13 @@ class CLI:
         #session.add(Appointment(service=service_prompt))
         
         # session.commit()
+
+    def delete_appt(self):
+        appt_del = input('Select by ID: ')
+        session.query(Appointment).filter(Appointment.id == appt_del).delete()
+        session.commit()
+
+
 
 
 CLI()

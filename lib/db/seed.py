@@ -53,6 +53,8 @@ if __name__ == '__main__':
     session.add_all([dog1, dog2, dog3, owner1, owner2, owner3, appointment1, appointment2])
     session.commit()
     session.close()
+
+   
 #Teddy Code end
     
     # session.add_all([dog1, dog2, dog3, owner1, owner2, owner3])
