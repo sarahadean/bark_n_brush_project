@@ -7,6 +7,9 @@ name = "pypi"
 sqlalchemy = "*"
 alembic = "*"
 ipdb = "*"
+prompt-toolkit = '==1.0.14'
+PyInquirer = '1.0.3'
+rich = "*"
 
 [dev-packages]
 
