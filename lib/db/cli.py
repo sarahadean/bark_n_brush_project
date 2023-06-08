@@ -78,6 +78,10 @@ class CLI:
             if choice == "2":
                 self.show_appts()
                 input('PRESS ANY KEY WHEN DONE')
+
+            if choice == "3":
+                self.update_appts()
+                input('MODIFY APPOINTMENT')
             elif choice == '5':
                 exit = True
     
@@ -85,6 +89,7 @@ class CLI:
       
         table = Table(title='Current Appointments', padding=1,header_style="bold black on #007ba7", style="bold black on #007ba7")
         table.add_column("Dog",  justify="center" , style="bold black on #007ba7")
+        table.add_column("Owner", justify="center" , style="bold black on #007ba7")
         table.add_column("Date and Time", justify="center" , style="bold black on #007ba7")
         table.add_column("Service", justify="center", style="bold black on #007ba7")
         table.add_column("Price", justify="center", style="bold black on #007ba7")
@@ -92,8 +97,8 @@ class CLI:
     #advanced deliverable - under dog name, list breed and age
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
-            table.add_row(f'{appointment.dog.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
-        # console = Console()    
+            table.add_row(f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
+
         console.print(table)
 
     #ask who is owner - enter owner name?
@@ -126,6 +131,10 @@ class CLI:
         #     "4": "Deluxe Doggie Spa"
         # }
 
+        appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
+        appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
+
+
         questions = [
             {
                 'type' : 'list',
@@ -141,16 +150,47 @@ class CLI:
         ]
         answers = prompt(questions)
         pprint(answers)
+        selected_service = answers['services']
+
+        add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
+        
+        session.add(add_new_appt)
         session.commit()
+
+        #show table
+        #
+        #session.query(Appointment).filter(Appointment.id == selected_id)
+        #choose id
+        #if id == self.id?
+    def update_appts(self):
+        self.show_appts()
+        selected_id = input("Please enter Appointment id..")
+        filter_result = session.query(Appointment).filter(Appointment.id == selected_id)
+
+        questions = [
+                    {
+                        'type' : 'list',
+                        'name' : 'fields',
+                        'message' : 'Choose Field to update:',
+                        'choices' : [
+                                "Dog",
+                                "Owner",
+                                "Date and Time",
+                                "Service"
+                        ]
+                    }
+                ]
+        answers = prompt(questions)
+        pprint(answers)
+        selected_update = answers['fields']
+        
+        pass
         #service_prompt = Prompt.ask(
             #"Please select a service:" , choices = service_choices
        # )
         #session.add(Appointment(service=service_prompt))
-
+        
         # session.commit()
-
-        # appt_date_and_time_str = input('"Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM')
-        # appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
 
 
 CLI()
