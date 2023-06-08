@@ -197,11 +197,11 @@ class CLI:
         # session.commit()
 
     def delete_appt(self):
+        self.show_appts()
         appt_del = input('Select by ID: ')
-        session.query(Appointment).filter(Appointment.id == appt_del).delete()
+        filtered_result = session.query(Appointment).filter(Appointment.id == appt_del)
+        filtered_result.delete
         session.commit()
-
-
 
 
 CLI()
