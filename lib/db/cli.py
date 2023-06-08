@@ -360,7 +360,25 @@ class CLI:
             answers = prompt(questions)
             pprint(answers)
             selected_service = answers['services']
-            filter_result.update({Appointment.service: selected_service})
+
+            #setting the price 
+            service_price = int
+            if selected_service == "Nice 'N Easy Bath":
+                service_price = 35
+            elif selected_service == "Doggie Facial":
+                service_price = 20
+            elif selected_service == "Nail Clipping/Grinding":
+                service_price = 20
+            elif selected_service == "Paw Balm":
+                service_price = 15
+            elif selected_service == "Furminator De-Shedding":
+                service_price = 50
+            elif selected_service == "Deluxe Doggie Spa":
+                service_price = 200
+            elif selected_service == "Doggie Daycare":
+                service_price = 100
+
+            filter_result.update({Appointment.service: selected_service, Appointment.price: service_price})
             print(update_art)
         else:
             input('Press any key to discard changes and go back to main menu')
