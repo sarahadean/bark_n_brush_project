@@ -46,6 +46,31 @@ Please select your desired function by number
 console = Console()
 md = Markdown(MARKDOWN)
 
+delete_art = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠳⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠰⡖⠒⠒⠒⠒⠚⠿⣧⡀⠈⠑⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣀⠬⠗⡤⠄⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠑⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢀⡞⠁⠰⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣇⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢠⣴⣫⣰⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠽⢆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢡⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣸⠀⣤⣤⣄⣀⡀⢀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⠀⠀⠀⠀⠀⠡⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢀⣿⣿⡇⠀⣿⣇⡍⠉⠁⠈⠛⣶⡖⢻⠓⠀⢿⣿⠀⠀⠀⠀⠀⠀⠙⢢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢰⡿⠉⣹⠃⠀⣿⣿⠇⠀⠀⠀⠀⣿⣿⡾⠀⠀⢸⣿⡄⠀⠀⠀⠀⠀⠀⠀⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣜⠀⢰⣷⡀⠀⠈⠉⠰⣶⡶⠄⠀⠙⠛⠁⠀⠀⠸⢻⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢇⠀⠈⠙⣧⣄⣀⡀⠴⠛⠢⣄⠀⠀⠀⠀⢀⡔⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⢧⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀
+⠘⢧⣀⣠⡼⠛⢿⣅⣀⡀⠀⠀⠀⠀⠀⠈⠁⣀⣀⣠⣼⠿⣄⠀⠀⠀⠀⠀⠀⠀⣼⠀⠀⠀⠀⠙⡟⠢⡀⠀⠀⠀
+⠀⠈⠉⠀⠀⠀⣼⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⡈⠑⠦⣄⣀⣀⣠⠟⠁⠀⠀⠀⠀⠀⡇⠀⠙⡄⠀⠀
+⠀⠀⠀⠀⢀⡾⡯⠉⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠀⠹⣅⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⢹⡴⡆
+⠀⠀⠀⠀⠀⣷⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠞⣿⣿
+⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠣⡀⠀⠀⠀⠀⠀⠀⢀⠞⠀⠀⠀⢀⣾⣿⠇
+⠀⠀⠀⢀⣤⣼⡅⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡤⡒⠒⠀⠀⠈⠢⢤⡀⠤⠔⠒⠁⠀⠀⢀⣴⣿⡽⠃⠀
+⠀⠀⠀⢀⡾⣽⡇⠀⠀⠀⡁⠀⢸⠃⠀⠀⠀⠀⡆⢠⣿⠿⠂⠀⠀⠀⠀⠀⠀⢷⣦⡀⠀⠐⠶⠾⠿⢿⣿⠟⠃⠀
+⠀⠀⠀⠘⣿⣿⡇⠀⠀⠀⠇⠀⢸⡇⠀⠀⠀⠠⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠉⠉⠓⠒⠒⠊⠉⠀⠀⠀⠀
+⠀⠀⢠⠞⡉⢸⠀⠀⠀⠀⡇⠀⢸⡇⠀⠀⠀⠀⣿⠘⣿⣶⣤⠄⠀⠀⠀⠀⠀⠀⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣾⣤⣷⡇⢰⠄⠀⠀⣿⣠⣾⢫⠀⠀⡀⢰⣿⣠⣿⣿⣇⢀⠃⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⠉⠙⠓⠼⠧⠜⠛⠃⠈⠳⣼⣷⣦⣼⣬⠋⠹⣿⣍⣉⣽⡤⠽⠭⠤⠶⠶⠇⠀⠀⠀⠀⠀⠀⠀⠀
+"""
+
 
 class CLI:
     def __init__(self):
@@ -76,7 +101,7 @@ class CLI:
 
             if choice == "4":
                 self.delete_appt()
-                input('Appointment cancelled. Press any key to return to the main menu..')    
+                # input('Appointment cancelled. Press any key to return to the main menu..')    
             elif choice == '5':
                 exit = True
 
@@ -142,7 +167,7 @@ class CLI:
             }
         ]
         answers = prompt(questions)
-        pprint(answers)
+        # pprint(answers)
         selected_service = answers['services']
 #!!!!add Input asking 'Add another service?'
         add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
@@ -177,7 +202,7 @@ class CLI:
                     }
                 ]
         answers = prompt(questions)
-        pprint(answers)
+        # pprint(answers)
         selected_update = answers['fields'] # = Dog, Owner, Date and Time, or Service
 
         if selected_update == 'Date and Time':
@@ -214,11 +239,28 @@ class CLI:
 #                   (Are you sure you want to cancel Tucker's appointment?)
     def delete_appt(self):
         self.show_appts()
-        appt_del = input('ID you wish to delete: ')
-        filtered_result = session.query(Appointment).filter(Appointment.id == appt_del)
-        confirm = input('Press any key to confirm cancellation..')
-        filtered_result.delete()
-        session.commit()
+        appt_del = int(input('ID you wish to delete: '))
+        query_show_appts = [appointment for appointment in session.query(Appointment)]
+        for appointment in query_show_appts:
+            if appointment.id == appt_del:
+                confirm = input(f'Press "Enter" to confirm cancellation for {appointment.dog.name}.')
+                session.delete(appointment)
+                session.commit()
+                print(delete_art)
+                self.show_appts()
+                input('Appointment cancelled. Press any key to return to the main menu..')   
+                break
+        else:
+            input('No appointment found with the specified ID. Press "Enter" to return to the main menu')
+
+
+
+
+
+        # filtered_result = session.query(Appointment).filter(Appointment.id == appt_del)
+        # confirm = input(f'Press any key to confirm cancellation for {filtered_result.dog_id}.')
+        # filtered_result.delete()
+        # session.commit()
 
 
 CLI()
