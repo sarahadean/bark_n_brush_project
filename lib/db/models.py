@@ -80,3 +80,4 @@ class Appointment(Base):
             + f" Service: {self.service}," \
             + f" Price: {self.price}," \
             
+Base.metadata.create_all(bind=engine)
