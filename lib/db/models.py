@@ -80,4 +80,17 @@ class Appointment(Base):
             + f" Service: {self.service}," \
             + f" Price: {self.price}," \
             
+class Menu_Item:
+    __tablename__ = "menu_items"
+    id = Column(Integer(), primary_key=True)
+    name = Column(String())
+    description = Column(String())
+    price = Column(Integer())
+
+    def __repr__(self):
+        return f"ID {self.id}:" \
+            + f" Name: {self.name,}" \
+            + f" Description: {self.description}," \
+            + f" Price: {self.price}," \
+            
 Base.metadata.create_all(bind=engine)

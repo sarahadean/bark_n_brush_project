@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Dog, Owner, Appointment
+from models import Dog, Owner, Appointment, Menu_Item
 
 if __name__ == '__main__':
     engine = create_engine('sqlite:///barknbrush.db')
@@ -62,6 +62,18 @@ if __name__ == '__main__':
     owner3.appointments.append(appointment3)
     owner4.appointments.append(appointment4)
     owner5.appointments.append(appointment5)
+
+    # name
+    # description
+    # price
+
+    m1 = Menu_Item(name="Nice 'N Easy Bath", description="A simple and relaxing bath that includes: brush out, ear cleaning, nail clip, cologne.", price=35)
+    m2 = Menu_Item(name="Doggie Facial", description="Our blueberry and apricot facial helps clear eye stains while cleaning and brightening your face of your pet.", price=20)
+    m3 = Menu_Item(name="Nail Clipping/Grinding", description="This process is quick and a pain-free way to trim and smooth nails", price=20)
+    m4 = Menu_Item(name="Paw Palm", description="Our paw balm conditions and soothes dry, cracked paws and itchy hot spots. It contains infusions of certified organic botanicals such as calendula and sunflower seed oil.", price=15)
+    m5 = Menu_Item(name="Furminator Treatment", description="We remove the old, loose undercoat from your pet. This treatment can eliminate up to 90 percent of shedding from your pet at home", price=50)
+    m6 = Menu_Item(name="Deluxe Doggie Spa", description="Bring your pupper by for a relaxing day. Includes all services listed above.", price=200)
+    m7 = Menu_Item(name="Doggie Daycare", description="Our facility has a dog pool, sprinkler, playground and toys galore!", price=100)
 
     session.add_all([dog1, dog2, dog3, dog4, dog5, owner1, owner2,
                     owner3, owner4, owner5, appointment1, appointment2, appointment3, appointment4, appointment5])
