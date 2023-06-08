@@ -142,7 +142,7 @@ class CLI:
             }
         ]
         answers = prompt(questions)
-        pprint(answers)
+        # pprint(answers)
         selected_service = answers['services']
 #!!!!add Input asking 'Add another service?'
         add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
@@ -177,7 +177,7 @@ class CLI:
                     }
                 ]
         answers = prompt(questions)
-        pprint(answers)
+        # pprint(answers)
         selected_update = answers['fields'] # = Dog, Owner, Date and Time, or Service
 
         if selected_update == 'Date and Time':
