@@ -74,7 +74,6 @@ class CLI:
             if choice == "1":
                 self.new_appt()
 
-
             if choice == "2":
                 self.show_appts()
                 input('PRESS ANY KEY WHEN DONE')
@@ -84,7 +83,6 @@ class CLI:
                 input('MODIFY APPOINTMENT')
 
             if choice == "4":
-                self.show_appts()
                 self.delete_appt()    
             elif choice == '5':
                 exit = True
@@ -99,20 +97,16 @@ class CLI:
         table.add_column("Service", justify="center", style="bold black on #007ba7")
         table.add_column("Price", justify="center", style="bold black on #007ba7")
         
-    #advanced deliverable - under dog name, list breed and age
+#!!!!!!GET FANCY - advanced deliverable - under dog name, list breed and age
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
             table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
 
         console.print(table)
 
-    #ask who is owner - enter owner name?
-    #ask who is dog - enter dog name, breed, age
-    #make sure new owner and dog persist in db
-    #session.add()
-    #session.commit()
+    
 
-    #!!! COME BACK LATER AND ADD CONTACT INFO ATTRIBUTE FOR OWNER
+    #!!!!!!GET FANCY! -  COME BACK LATER AND ADD CONTACT INFO ATTRIBUTE FOR OWNER
     def new_appt(self):
         
         dog_name = input('Enter Dog Name: ')
@@ -129,13 +123,7 @@ class CLI:
         session.add(new_owner)
         #session.commit()
         
-        # service_choices = {
-        #     "1": "Bath",
-        #     "2": "Nail Trim",
-        #     "3": "Grooming",
-        #     "4": "Deluxe Doggie Spa"
-        # }
-
+       
         appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
         appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
 
@@ -197,11 +185,13 @@ class CLI:
         
         # session.commit()
 
+#!!!!!!GET FANCY AND ADD INPUT ID TO CANCELLATION CONFIRMATION MESSAGE
     def delete_appt(self):
         self.show_appts()
-        appt_del = input('Select by ID: ')
+        appt_del = input('ID you wish to delete: ')
         filtered_result = session.query(Appointment).filter(Appointment.id == appt_del)
-        filtered_result.delete
+        confirm = input('Press any key to confirm cancellation..')
+        filtered_result.delete()
         session.commit()
 
 
