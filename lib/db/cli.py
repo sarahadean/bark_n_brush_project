@@ -121,7 +121,8 @@ class CLI:
 
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
-            table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appointment.date_and_time}', f'{appointment.service}', f'{appointment.price}')
+            appt_datetime_string = appointment.date_and_time.strftime('%B %d %Y %I:%M %p')
+            table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appt_datetime_string}', f'{appointment.service}', f'{appointment.price}')
 
         console.print(table)
 
