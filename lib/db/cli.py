@@ -48,6 +48,46 @@ Please select your desired function by number
 console = Console()
 md = Markdown(MARKDOWN)
 
+new_appt_art = """
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⠤⠤⠤⠤⢤⣤⣄⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣰⠶⠒⠚⠋⠁⠀⠀⢀⣀⡀⠀⠀⠀⠀⠈⠉⠛⠿⣶⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⢣⣶⠀⠀⠀⠀⠀⢰⣟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠞⠁⠀⠀⠀⠀⠀⢘⡿⢿⠓⠚⠿⣷⣤⠀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡤⠞⠁⠀⠀⠀⠀⣴⢄⣴⣿⣷⡿⣿⣤⠀⠀⠙⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣀⣤⠴⠶⠞⠛⠛⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⣸⢻⡿⠿⠻⣿⣷⣬⣿⣆⠀⠀⠹⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣴⠾⠟⠿⢶⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠒⠿⣭⣉⣁⣿⣦⠀⠀⠀⠀⠀⠀⠀⣦⣄⡀⠀⠀⠀⠘⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⣿⣿⣷⣦⣨⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⢀⣀⣹⣿⣷⣄⡀⠀⠀⠀⣰⣿⣿⣷⣦⣀⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢨⣿⣿⢛⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣷⣿⣿⣿⣿⡏⠛⠻⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⢿⡿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡄⠀⠀⠀⠈⢳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⠟⢡⣤⠄⠈⠻⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢫⢸⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠈⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⠇⢠⣿⡏⠀⠀⠀⠈⠻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⣼⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠦⢤⣤⣿⣿⣿⣿⣶⣤⣀⣀⣀⣤⣾⣿⣿⣿⣿⡿⠣⡞⠋⠉⣿⡀⠀⠀⠀⠀⠈⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠘⢿⣿⠉⠙⠶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠁⠀⠀⢸⡇⠀⠀⠀⠀⠀⢹⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠓⢦⣀⡈⠙⢶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣀⠀⢸⣿⣶⣷⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠙⠛⢶⣤⣈⠛⠿⠟⠛⠛⠛⠛⠛⠛⠛⠁⠀⢀⡤⠀⣰⡿⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⣸⣿⡇⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠳⠶⠶⢾⣿⣶⣄⡀⠀⢠⡶⠿⠿⢿⣿⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⣿⡟⠁⠉⠉⣼⡇⠀⠀⠀⠀⣿⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⣿⡿⢿⣷⣄⠀⠀⠻⡏⠛⠿⠟⠛⠉⠉⠉⠉⣿⣿⠀⢸⣷⡀⠀⢸⣿⠁⠀⠀⠀⣴⣿⣼⡇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣷⡀⢻⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⢤⣾⡿⠃⠀⢀⣿⣧⣀⣼⠏⠀⠀⢀⣧⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣧⠀⢻⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⡿⠛⣽⠏⠀⠀⠀⣼⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠘⡏⠙⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⣸⠏⠀⠀⠀⢸⣿⡿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡄⣇⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣷⡏⠀⠀⠀⢰⣿⣿⡇⢸⠙⣍⠻⣿⣷⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣀⠀⣰⣿⣿⣿⣿⣿⣿⡇⢸⠀⠈⣇⠀⠀⠀⠀⠀⠀⢀⣤⠶⠿⠿⣿⡏⠀⠀⠀⢠⣿⣿⣿⠀⠈⠀⣿⠀⢻⣿⣧⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⢻⣿⣿⣿⣿⣿⣿⣇⡼⠀⠀⢿⠀⠀⠀⠀⠀⢠⠟⠁⠀⢀⣴⠏⠀⠀⠀⢠⣾⠇⣾⢿⠀⠀⠀⣿⠀⠘⠎⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⡇⠉⠀⠀⠀⠘⠃⠀⠀⠀⢀⣸⣀⣠⡴⠟⠁⠀⠀⢀⡴⠛⠁⢠⡟⣿⠀⠀⠀⢿⠀⠀⠀⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⢏⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢙⣿⣶⡴⠖⠀⠀⠀⡞⠀⠀⢠⣿⡇⢻⠀⠀⠀⠘⣆⠀⠀⢻⣧⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡟⢺⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣯⡤⠖⠀⠀⠀⠀⠀⠀⢠⣿⢿⡇⢸⠀⠀⠀⠀⠹⡀⠳⡀⢻⣦⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⣤⢿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠇⢸⡇⣼⠀⠀⡄⠀⠀⢻⡄⠙⣆⠹⣆⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠵⠖⣀⣀⣤⣤⠀⠀⠀⠀⣸⡏⢀⣾⢳⡏⠀⠀⣧⠀⠀⠀⢿⡄⠘⣦⢻⡆⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⢶⡿⢋⣿⡿⠃⠀⠀⠀⢀⣿⠀⢸⡟⢸⠁⠀⠀⢿⠰⡄⠀⠈⣿⠀⢸⣿⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠏⣻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠏⣼⡷⢋⣿⠃⠀⠀⠀⠀⠸⢿⠀⣼⡇⠀⠀⢀⡄⢸⡆⡇⠀⠀⢹⡇⠀⡏⢣⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⣾⠏⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⣼⠀⣼⣳⢇⡆⠀⣼⡇⢀⣇⠘⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⠀⠀⡤⠀⣀⠀⠀⠀⠀⢹⣧⡆⢰⠋⣰⢣⡟⡾⢰⠀⣿⠁⣾⣿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡆⠀⣇⠀⡇⠀⠀⠀⡆⠘⣿⠁⣿⠀⣿⣾⣁⡇⣾⢺⣿⢠⣿⡇⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡄⢿⣦⣿⡀⢦⠀⠸⣦⡙⣧⠹⣧⣿⣿⣿⣷⣿⣾⣿⣿⣿⡇⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢾⣿⣿⣷⣼⣧⣳⣬⣽⣿⣶⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠻⠿⠿⠿⠿⠿⠶⠷⠀⠙⢿⣿⣿⣿⣿⣿⣷⠈⠓⠆
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠛⠛⠿⠧⠄⠀
+"""
+
 update_art = """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⢤⠤⢄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣻⠟⠛⠛⠳⣯⡓⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -190,7 +230,7 @@ class CLI:
         query_show_appts = [appointment for appointment in session.query(Appointment)]
         for appointment in query_show_appts:
             appt_datetime_string = appointment.date_and_time.strftime('%B %d %Y %I:%M %p')
-            table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appt_datetime_string}', f'{appointment.service}', f'{appointment.price}')
+            table.add_row(f'{appointment.id}', f'{appointment.dog.name}', f'{appointment.owner.name}', f'{appt_datetime_string}', f'{appointment.service}', f'$ {appointment.price}')
 
         console.print(table)
 
@@ -217,7 +257,7 @@ class CLI:
         new_owner = Owner(name=owner_name)
         new_owner.best_friends.append(new_dog)
         session.add(new_owner)
-        #session.commit()
+        session.commit()
         
         appt_date_and_time_str = input('Please enter a date and time in the following format: MM/DD/YYYY HH:MM AM/PM. Example: 12/31/2000 12:00 PM:')
         appt_date_and_time_obj = datetime.strptime(appt_date_and_time_str, "%m/%d/%Y %I:%M %p")
@@ -242,8 +282,25 @@ class CLI:
         answers = prompt(questions)
         # pprint(answers)
         selected_service = answers['services']
+        #setting the price 
+        service_price = int
+        if selected_service == "Nice 'N Easy Bath":
+            service_price = 35
+        elif selected_service == "Doggie Facial":
+            service_price = 20
+        elif selected_service == "Nail Clipping/Grinding":
+            service_price = 20
+        elif selected_service == "Paw Balm":
+            service_price = 15
+        elif selected_service == "Furminator De-Shedding":
+            service_price = 50
+        elif selected_service == "Deluxe Doggie Spa":
+            service_price = 200
+        elif selected_service == "Doggie Daycare":
+            service_price = 100
+
 #!!!!add Input asking 'Add another service?'
-        add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=50, dog_id=new_dog.id, owner_id=new_owner.id)
+        add_new_appt = Appointment(date_and_time=appt_date_and_time_obj, service=selected_service, price=f' {service_price}', dog_id=new_dog.id, owner_id=new_owner.id)
         #input("Appointment Summary:
         #       Owner:
         #       Dog:
@@ -253,6 +310,7 @@ class CLI:
         #       ")
         session.add(add_new_appt)
         session.commit()
+        print(new_appt_art)
 
 
 
@@ -302,7 +360,25 @@ class CLI:
             answers = prompt(questions)
             pprint(answers)
             selected_service = answers['services']
-            filter_result.update({Appointment.service: selected_service})
+
+            #setting the price 
+            service_price = int
+            if selected_service == "Nice 'N Easy Bath":
+                service_price = 35
+            elif selected_service == "Doggie Facial":
+                service_price = 20
+            elif selected_service == "Nail Clipping/Grinding":
+                service_price = 20
+            elif selected_service == "Paw Balm":
+                service_price = 15
+            elif selected_service == "Furminator De-Shedding":
+                service_price = 50
+            elif selected_service == "Deluxe Doggie Spa":
+                service_price = 200
+            elif selected_service == "Doggie Daycare":
+                service_price = 100
+
+            filter_result.update({Appointment.service: selected_service, Appointment.price: service_price})
             print(update_art)
         else:
             input('Press any key to discard changes and go back to main menu')
