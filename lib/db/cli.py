@@ -224,7 +224,7 @@ class CLI:
         table.add_column("Owner", justify="center" , style="bold black on #007ba7")
         table.add_column("Date and Time", justify="center" , style="bold black on #007ba7")
         table.add_column("Service", justify="center", style="bold black on #007ba7")
-        table.add_column("Price", justify="center", style="bold black on #007ba7")
+        table.add_column("Total", justify="center", style="bold black on #007ba7")
         
 
         query_show_appts = [appointment for appointment in session.query(Appointment)]
